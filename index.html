@@ -75,7 +75,7 @@ function card(d){
 }
 function render(){
   chips('kinds',['All','Pop','Statue','Keychain','Mini'],()=>kind,v=>kind=v);
-  chips('conds',['All','Checked','Not checked'],()=>cond,v=>cond=v);
+  chips('conds',['Checked','Not checked'],()=>cond,v=>cond=(cond===v?'All':v));
   const s=q.toLowerCase();
   const list=DATA.filter(d=>(kind==='All'||d.kind===kind)&&(cond==='All'||(cond==='Checked')===!!d.cond)&&(!s||(d.name+' '+d.code+' '+d.box).toLowerCase().includes(s)));
   document.getElementById('grid').innerHTML=list.length?list.map(card).join(''):'<div class="empty">No items match.</div>';
